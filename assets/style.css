@@ -1008,3 +1008,5 @@ html{scroll-padding-top:140px}
 #services.section{padding-top:22px;border-top:1px solid var(--line)}
 #services h2{font-size:26px}
 @media(max-width:360px){.brand-nav{padding:0 5px}.brand-nav a{font-size:11px}}
+
+.brand-nav{grid-template-columns:repeat(5,minmax(0,1fr));padding:0 4px}.brand-nav a{font-size:11px;letter-spacing:-.6px;padding:8px 1px;word-break:keep-all}.service-grid .card{padding:18px 14px}.service-grid .card h2{margin-top:0}@media(max-width:360px){.brand-nav a{font-size:10px}}

@@ -5,6 +5,7 @@ https://suwon-ongyeol-brow.pages.dev/services/combo/
 https://suwon-ongyeol-brow.pages.dev/services/men/
 https://suwon-ongyeol-brow.pages.dev/services/powder/
 https://suwon-ongyeol-brow.pages.dev/services/retouch/
+https://suwon-ongyeol-brow.pages.dev/gallery/
 https://suwon-ongyeol-brow.pages.dev/about/
 https://suwon-ongyeol-brow.pages.dev/guide/
 https://suwon-ongyeol-brow.pages.dev/contact/

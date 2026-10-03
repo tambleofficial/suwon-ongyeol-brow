@@ -64,8 +64,8 @@ for (const file of all) {
     }
     assert(/class="controls" hidden/.test(html));
     const brandNav = html.match(/<nav class="brand-nav"[^>]*>([\s\S]*?)<\/nav>/)[1];
-    assert.equal((brandNav.match(/<a /g) || []).length, 4);
-    for (const route of ['about','services','guide','contact']) assert(brandNav.includes(`href="/${route}/"`));
+    assert.equal((brandNav.match(/<a /g) || []).length, 5);
+    for (const route of ['about','services','gallery','guide','contact']) assert(brandNav.includes(`href="/${route}/"`));
 
   }
 }

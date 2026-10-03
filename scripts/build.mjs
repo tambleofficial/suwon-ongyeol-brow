@@ -5,7 +5,7 @@ import { validateInput } from './validate-input.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 process.chdir(root);
-console.log('ONGYEOL BUILD v1.5.0 — starting');
+console.log('ONGYEOL BUILD v1.6.0 — starting');
 for (const required of ['site.config.json', 'services.json', 'pages.json', 'assets']) {
   if (!fs.existsSync(required)) throw new Error(`필수 파일 누락: ${required}. ZIP 전체 내용을 저장소 루트에 업로드하세요.`);
 }
@@ -50,6 +50,7 @@ function header(){return `<a class="skip" href="#main">본문 바로가기</a>
 <nav class="brand-nav" aria-label="주 메뉴">
 <a href="/about/">온결의 기준</a>
 <a href="/services/">눈썹 디자인</a>
+<a href="/gallery/">디자인 갤러리</a>
 <a href="/guide/">이용 가이드</a>
 <a href="/contact/">상담·위치 안내</a>
 </nav>
@@ -97,6 +98,8 @@ const pages=[];
 function page(route,title,description,content,{extra=[],image=img(featured[0]),index=true}={}){const service = services.find(item => servicePath(item) === route);
 const topicKeywords = service ? ['수원'+service.name, '수원역 '+service.name, service.name+' 디자인'] : ({'/':['수원자연눈썹','수원콤보눈썹','수원남자눈썹문신','수원파우더눈썹'], '/services/':['수원자연눈썹','수원콤보눈썹','수원남자눈썹문신','눈썹 디자인 비교'], '/guide/':['눈썹문신 상담 준비','눈썹문신 관리 안내'], '/contact/':['수원역 눈썹 상담','온결브로우 문의'], '/about/':['온결브로우 소개','눈썹 디자인 상담'], '/privacy/':['온결브로우 개인정보 안내']})[route] || [];
 const keywords = [...new Set(['수원눈썹문신','수원역눈썹문신',config.brand,...topicKeywords])].join(', ');
+const menuVisuals = {'/about/':'about','/services/':'services','/gallery/':'gallery','/guide/':'guide','/contact/':'contact'};
+if (menuVisuals[route]) image = '/assets/images/menu-'+menuVisuals[route]+'.webp';
 const shareImageAlt = services.find(item => img(item) === image)?.imageAlt || '온결브로우 AI 눈썹 디자인 참고 이미지';
 const dates = service || pageMetadata[route] || { publishedAt: config.lastUpdated, updatedAt: config.lastUpdated };
 const crumbs = route === '/' || !index ? [] : [
@@ -288,9 +291,10 @@ page('/services/', `수원눈썹문신 디자인 비교·비용 상담 | ${confi
 <p class="eyebrow">BROW DESIGN GUIDE</p>
 <h1>나에게 맞는 눈썹 디자인 찾기</h1>
 <p>표현 방식과 현재 눈썹 상태를 기준으로 비교해 보세요.</p>
+<figure class="page-visual"><img src="/assets/images/menu-services.webp" width="1254" height="1254" alt="눈썹 라인과 균형을 표현한 새로운 AI 디자인 이미지"><figcaption>AI 디자인 참고 이미지</figcaption></figure>
   <div class="service-grid">${services.map(service => `<article class="card">
 <a href="${servicePath(service)}">
-<img src="${img(service)}" alt="${esc(service.imageAlt)}" width="1254" height="1254" loading="lazy">
+
 <h2>${esc(service.name)}</h2>
 <p>${esc(service.description)}</p>
 </a>
@@ -346,13 +350,10 @@ for(const s of services){page(servicePath(s),`수원 ${s.name} 디자인·상담
 </section>
 </article>
 </div>${contact()}`,{image:img(s),extra:[{'@type':'Service','@id':url(servicePath(s)+'#service'),name:s.name,description:s.description,url:url(servicePath(s)),image:url(img(s)),provider:{'@id':business['@id']}}]});}
-function articlePage(route,title,desc,body){const visual = services.find(s => s.slug === ({'/about/':'natural','/guide/':'retouch','/contact/':'combo'}[route])); page(route,`${title} | 온결브로우`,desc,`<div class="wrap">
-<nav class="breadcrumb" aria-label="현재 위치">
-<a href="/">홈</a> / ${title}</nav>
-<article class="article">
-<p class="eyebrow">ONGYEOL BROW STUDIO</p>
-<h1>${title}</h1>${visual ? `<figure class="page-visual"><img src="${img(visual)}" width="1254" height="1254" alt="${esc(visual.imageAlt)}"><figcaption>AI 디자인 참고 이미지</figcaption></figure>` : ''}${body}</article>
-</div>${contact()}`,{image:visual ? img(visual) : img(featured[0])});}
+function articlePage(route,title,desc,body){const key = {'/about/':'about','/guide/':'guide','/contact/':'contact','/gallery/':'gallery'}[route]; page(route,`${title} | 온결브로우`,desc,`<div class="wrap">
+<nav class="breadcrumb" aria-label="현재 위치"><a href="/">홈</a> / ${title}</nav>
+<article class="article"><p class="eyebrow">ONGYEOL BROW STUDIO</p><h1>${title}</h1>${key ? `<figure class="page-visual"><img src="/assets/images/menu-${key}.webp" width="1254" height="1254" alt="${title}를 위한 온결브로우 AI 설명 이미지"><figcaption>AI로 제작한 브랜드·디자인 설명 이미지</figcaption></figure>` : ''}${body}</article></div>${contact()}`);}
+articlePage('/gallery/','디자인 갤러리','눈썹의 결·음영·라인을 살펴보는 온결브로우 디자인 갤러리. AI 참고 이미지와 함께 원하는 인상을 정리하고 디자인 상담으로 연결합니다.',`<section><h2>사진에서 살펴볼 세 가지</h2><p>눈썹 앞머리의 간격, 눈썹산의 높이, 꼬리로 이어지는 두께를 차례로 살펴보세요. 사진 전체의 분위기와 눈썹 자체의 표현을 구분하면 원하는 인상을 설명하기 쉽습니다.</p></section><section><h2>결과 음영의 차이</h2><p>모의 방향이 드러나는 표현과 부드럽게 채워진 음영은 서로 다른 인상을 만듭니다. 평소 눈썹 화장 습관과 원하는 진하기를 기준으로 비교해 보세요.</p><a class="btn" href="/services/">눈썹 디자인 비교하기</a></section><section><h2>상담할 때 이렇게 설명해 주세요.</h2><p>사진을 똑같이 재현하기보다 마음에 드는 부분과 피하고 싶은 느낌을 나누어 알려주세요. 기존 눈썹의 양과 모양, 잔흔 유무에 따라 상담할 내용이 달라집니다.</p><a class="btn light" href="/contact/">상담·위치 안내</a></section><p class="note">이 갤러리는 AI로 만든 디자인 참고 이미지이며 실제 고객의 시술 사례나 전후 결과가 아닙니다.</p>`);
 articlePage('/about/','온결의 디자인 기준','온결브로우가 지향하는 자연스러운 눈썹 디자인. 결·음영·얼굴 비율·생활 습관을 함께 살펴보는 상담 기준을 소개합니다.',`<section>
 <div class="editorial">Your brow, your balance.</div>
 <h2>온전한 나의 인상, 자연스러운 결.</h2>
@@ -481,4 +482,4 @@ fs.mkdirSync(path.join(root, 'public'), { recursive: true });
 for (const name of ['robots.txt', 'sitemap.xml', 'rss.xml']) {
   fs.copyFileSync(path.join(out, name), path.join(root, 'public', name));
 }
-console.log('ONGYEOL BUILD v1.5.0 — complete; deploy directory: dist');
+console.log('ONGYEOL BUILD v1.6.0 — complete; deploy directory: dist');
