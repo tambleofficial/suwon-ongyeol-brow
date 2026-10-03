@@ -923,3 +923,64 @@ summary{font-size:16px;line-height:1.6;min-height:32px}
 .side-contact-link{border:1px solid #ffffff50;border-radius:50%;width:86px;height:86px;display:grid;place-items:center;font-size:14px}
 }
 @media(max-width:360px){.wrap{width:calc(100% - 36px)}.hero h1{font-size:34px}.hero .actions{grid-template-columns:1fr}.bottom-bar a{font-size:12px}.phone{font-size:25px}}
+/* ONGYEOL 1.3: original burgundy brand identity, mobile editorial canvas. */
+:root{--bg:#fffdf9;--ink:#502631;--muted:#786d6c;--line:#e7dcd5;--accent:#884757;--paper:#f5eee8}
+html,body{background:#e9e0d8;color:#35292c}
+.site-shell{background:#fffdf9;max-width:520px;box-shadow:0 0 70px #583b3310}
+.header{background:#fffdf9f5;border-bottom:1px solid #e7dcd5;height:80px}
+.header .logo{font-family:Georgia,serif;font-size:29px;letter-spacing:3px;color:#502631}
+.logo small{letter-spacing:2px;font-size:10px}
+.menu-btn{border:0;border-bottom:1px solid #884757;border-radius:0;padding:6px 0;color:#502631}
+.mobile-nav{background:#fffdf9}
+.hero-copy{padding:40px 0 28px}
+.hero .eyebrow{color:#884757;letter-spacing:2.2px;font-size:11px}
+.hero h1{font-size:43px;font-weight:400;line-height:1.35;letter-spacing:-2px;color:#502631}
+.hero h1 span{font-size:13px;letter-spacing:.5px;color:#786d6c;margin-bottom:20px}
+.hero h1 .serif{font-family:Georgia,serif;font-style:italic;font-weight:400;color:#a35768}
+.hero p{font-size:15px;line-height:1.9}
+.hero .actions{grid-template-columns:1fr 1fr}
+.btn{border-radius:2px;background:#502631;border-color:#502631;font-size:13px}
+.btn.light{border-color:#cbb7b1;color:#502631}
+.hero-visual{aspect-ratio:1/1;margin-bottom:26px;border-radius:110px 3px 3px 3px}
+.hero-visual img{object-position:center 44%}
+.image-note{background:#502631b0;border-radius:0;font-size:11px;letter-spacing:.5px}
+.ribbon{background:#502631;border:0;padding:17px 0}
+.ribbon .wrap{color:#f3dfd4;font-size:9px;letter-spacing:.6px}
+.section.section{padding:52px 0}
+.section h2,.article h2{font-weight:500;font-size:28px;color:#502631}
+.section .eyebrow{color:#a35768;letter-spacing:2px;font-size:11px}
+.card{flex-basis:76%;background:#f5eee8;padding:10px 10px 18px;border:1px solid #e7dcd5}
+.card figure{border-radius:70px 2px 2px 2px}
+.card h3{font-size:20px;font-weight:500;margin:16px 5px 7px}
+.card small,.card p{margin-left:5px;margin-right:5px}
+.card small{color:#995566;font-size:10px;letter-spacing:1.5px}
+.card p{margin-top:8px;font-size:14px}
+.carousel{scrollbar-color:#a35768 #f0e6df}
+.controls button{border-radius:0;color:#502631;border-color:#d6c4bc}
+.contrast{background:#f1e7df}
+.split img,.detail-hero img{border-radius:2px 70px 2px 2px}
+.editorial{font:italic 34px/1.4 Georgia,serif;color:#884757}
+.step b{color:#a35768}
+.review{border:0;border-left:2px solid #a35768;border-radius:0;background:#f5eee8}
+.review h3{font-weight:500}
+.contact{background:#502631;color:#fff6ed}
+.contact h2{color:#fff6ed;font-weight:400}
+.contact p{color:#e1c9c8}
+.contact .eyebrow{color:#ddb39d}
+.contact .btn{background:#f3e5d7;color:#502631}
+.contact .btn.light{background:transparent;color:#f3e5d7;border-color:#9f7a81}
+.footer{background:#f5eee8;color:#786d6c}
+.footer .logo{color:#502631;letter-spacing:3px}
+.bottom-bar{width:min(calc(100% - 24px),496px);bottom:12px;border-radius:8px;overflow:hidden;box-shadow:0 5px 26px #50263130;background:#f1e2d5;padding:0 0 env(safe-area-inset-bottom)}
+.bottom-bar a{min-height:58px;font-size:13px}
+.bottom-bar .map{background:#f1e2d5;color:#502631;flex:1}
+.bottom-bar .call{background:#502631;flex:1.4}
+.detail-hero h1,.service-hub h1{color:#502631;font-weight:500}
+.related a{border-radius:2px}
+.side-brand{display:none!important}
+.side-contact{display:none!important}
+@media(min-width:1100px){
+body:before{content:'ONGYEOL';position:fixed;left:calc(50% - 540px);top:15%;font:36px Georgia,serif;letter-spacing:5px;color:#502631}
+body:after{content:'A quiet detail.\A A lasting impression.';white-space:pre;position:fixed;left:calc(50% + 320px);bottom:18%;font:italic 26px/1.7 Georgia,serif;color:#884757}
+}
+@media(max-width:360px){.hero h1{font-size:35px}.hero .actions{grid-template-columns:1fr}.bottom-bar a{font-size:12px}}

@@ -1,4 +1,4 @@
-온결브로우 배포본 v1.2.1
+온결브로우 배포본 v1.3.0
 
 1. ZIP을 압축 해제합니다.
 2. 압축 해제한 폴더 안의 모든 파일과 폴더를 GitHub 저장소 최상위에 업로드하여 기존 파일을 교체합니다.
@@ -16,8 +16,8 @@
    운영 브랜치가 main이 아니라면 PRODUCTION_BRANCH에 실제 운영 브랜치명을 추가하세요.
 5. 최신 커밋으로 배포합니다. 과거 실패 배포의 Retry가 아니라 최신 커밋이 배포되는지 확인하세요.
 6. 빌드 로그에 아래 문구가 보여야 이번 수정본입니다.
-   ONGYEOL BUILD v1.2.1 — starting
-   ONGYEOL BUILD v1.2.1 — complete; deploy directory: dist
+   ONGYEOL BUILD v1.3.0 — starting
+   ONGYEOL BUILD v1.3.0 — complete; deploy directory: dist
 
 public 폴더에는 실제 robots.txt / sitemap.xml / rss.xml이 포함되어 있습니다.
 빌드는 최종 대표 주소와 공개 페이지 데이터로 이 파일들을 갱신하고 dist 루트에도 생성합니다.

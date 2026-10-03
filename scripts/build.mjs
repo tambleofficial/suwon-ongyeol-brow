@@ -5,7 +5,7 @@ import { validateInput } from './validate-input.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 process.chdir(root);
-console.log('ONGYEOL BUILD v1.2.1 — starting');
+console.log('ONGYEOL BUILD v1.3.0 — starting');
 for (const required of ['site.config.json', 'services.json', 'pages.json', 'assets']) {
   if (!fs.existsSync(required)) throw new Error(`필수 파일 누락: ${required}. ZIP 전체 내용을 저장소 루트에 업로드하세요.`);
 }
@@ -137,12 +137,12 @@ const graph=[business,website,{'@type':'WebPage','@id':url(route+'#webpage'),url
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="${url(image)}">
 <meta name="twitter:image:alt" content="${esc(shareImageAlt)}">
-<meta name="theme-color" content="#15343b">${verify?`<meta name="naver-site-verification" content="${esc(verify)}">`:''}<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#502631">${verify?`<meta name="naver-site-verification" content="${esc(verify)}">`:''}<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate" type="application/rss+xml" title="온결브로우 안내" href="/rss.xml">
 <link rel="stylesheet" href="/assets/style.css">
 <script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@graph':graph},null,2).replace(/</g,'\\u003c')}</script>
 </head>
-<body><aside class="side-brand" aria-label="브랜드 안내"><a class="side-wordmark" href="/">ONGYEOL<span>온결브로우</span></a><h2>나에게 맞는 결,<br>자연스러운 나다움.</h2><p>수원눈썹문신 디자인 안내</p><div class="side-facts"><b>5</b> 가지 눈썹 디자인<br><b>수원역</b> 위치 안내 기준</div><a href="/services/">눈썹 디자인 살펴보기</a></aside><div class="site-shell">${header()}<main id="main">${content}</main>${footer()}</div><aside class="side-contact" aria-label="빠른 상담"><p>LET’S TALK</p><h2>나의 눈썹,<br>디자인 상담</h2><a class="side-phone" href="${tel}">${esc(config.phone)}</a><a class="side-contact-link" href="/contact/">문의 안내</a></aside></body>
+<body><div class="site-shell">${header()}<main id="main">${content}</main>${footer()}</div></body>
 </html>`;const file=route==='/404.html'?path.join(out,'404.html'):path.join(out,route,'index.html');fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,html);if(index)pages.push({route,title,description,image,...dates});}
 const faq=items=>items.map(([q,a])=>`<details>
 <summary>${esc(q)}</summary>
@@ -500,4 +500,4 @@ fs.mkdirSync(path.join(root, 'public'), { recursive: true });
 for (const name of ['robots.txt', 'sitemap.xml', 'rss.xml']) {
   fs.copyFileSync(path.join(out, name), path.join(root, 'public', name));
 }
-console.log('ONGYEOL BUILD v1.2.1 — complete; deploy directory: dist');
+console.log('ONGYEOL BUILD v1.3.0 — complete; deploy directory: dist');
