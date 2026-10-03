@@ -5,7 +5,7 @@ import { validateInput } from './validate-input.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 process.chdir(root);
-console.log('ONGYEOL BUILD v1.3.0 — starting');
+console.log('ONGYEOL BUILD v1.5.0 — starting');
 for (const required of ['site.config.json', 'services.json', 'pages.json', 'assets']) {
   if (!fs.existsSync(required)) throw new Error(`필수 파일 누락: ${required}. ZIP 전체 내용을 저장소 루트에 업로드하세요.`);
 }
@@ -46,15 +46,8 @@ function header(){return `<a class="skip" href="#main">본문 바로가기</a>
 <div class="wrap">
 <a class="logo" href="/" aria-label="${esc(config.brand)} 홈">${esc(config.brandWordmark)}<small>${esc(config.brandTagline)}</small>
 </a>
-<nav class="desktop-nav" aria-label="주 메뉴">
-<a href="/about/">온결의 기준</a>
-<a href="/services/">눈썹 디자인</a>
-<a href="/guide/">이용 가이드</a>
-<a href="/contact/">상담·위치 안내 ↗</a>
-</nav>
-<button class="menu-btn" hidden aria-expanded="false" aria-controls="mobile-nav">메뉴</button>
 </div>
-<nav class="mobile-nav" id="mobile-nav" aria-label="모바일 메뉴">
+<nav class="brand-nav" aria-label="주 메뉴">
 <a href="/about/">온결의 기준</a>
 <a href="/services/">눈썹 디자인</a>
 <a href="/guide/">이용 가이드</a>
@@ -151,7 +144,7 @@ const faq=items=>items.map(([q,a])=>`<details>
 const cards=featured.map((s,i)=>`<li class="card">
 <a href="${servicePath(s)}">
 <figure>
-<img src="${img(s)}" width="1024" height="1024" loading="lazy" alt="${esc(s.imageAlt)}" style="object-position:${esc(s.imagePosition)}">
+<img src="${img(s)}" width="1254" height="1254" loading="${i === 0 ? 'eager' : 'lazy'}" alt="${esc(s.imageAlt)}" style="object-position:${esc(s.imagePosition)}">
 <span class="number">0${i+1}</span>
 </figure>
 <h3>${esc(s.name)}<span aria-hidden="true">↗</span>
@@ -188,25 +181,13 @@ page('/',`수원눈썹문신 | ${config.brand} · 자연스러운 눈썹 디자�
 <a class="btn light" href="${tel}">상담 문의 ↗</a>
 </div>
 </div>
-<div class="hero-visual">
-<img src="${img(services[0])}" width="1024" height="1024" fetchpriority="high" alt="섬세한 자연눈썹 결을 보여주는 디자인 참고 이미지">
-<span class="hero-label">YOUR<br>NATURAL<br>BALANCE</span>
-<span class="image-note">DESIGN INSPIRATION · AI 디자인 참고 이미지</span>
-</div>
-</div>
-<div class="ribbon">
-<div class="wrap">
-<span>NATURAL TEXTURE</span>
-<span>PERSONAL BALANCE</span>
-<span>SUWON · ONGYEOL</span>
-</div>
 </div>
 <section class="section" id="services">
 <div class="wrap">
 <div class="section-head">
 <div>
 <p class="eyebrow">01 / BROW COLLECTION</p>
-<h2>같은 눈썹은 없으니까.</h2>
+<h2>수원눈썹문신, 디자인으로 비교하세요.</h2>
 <p>지금의 눈썹과 원하는 인상에 맞춰 비교해 보세요.</p>
 </div>
 <p>옆으로 넘겨 ${featured.length}가지 디자인 보기 →</p>
@@ -229,7 +210,7 @@ page('/',`수원눈썹문신 | ${config.brand} · 자연스러운 눈썹 디자�
 </section>
 <section class="section contrast">
 <div class="wrap split">
-<img src="${img(services.find(item => item.slug === 'powder') || featured[0])}" width="1024" height="1024" loading="lazy" alt="부드러운 음영과 눈썹 균형 디자인 참고">
+<img src="${img(services.find(item => item.slug === 'powder') || featured[0])}" width="1254" height="1254" loading="lazy" alt="부드러운 음영과 눈썹 균형 디자인 참고">
 <div>
 <p class="eyebrow">02 / OUR PHILOSOPHY</p>
 <div class="editorial">Less defined.<br>More like you.</div>
@@ -333,7 +314,7 @@ for(const s of services){page(servicePath(s),`수원 ${s.name} 디자인·상담
 </div>
 </div>
 <figure>
-<img src="${img(s)}" width="1024" height="1024" fetchpriority="high" alt="${esc(s.imageAlt)}" style="object-position:${esc(s.imagePosition)}">
+<img src="${img(s)}" width="1254" height="1254" fetchpriority="high" alt="${esc(s.imageAlt)}" style="object-position:${esc(s.imagePosition)}">
 <figcaption>AI로 제작한 디자인 참고 이미지 · 실제 고객 사례 아님</figcaption>
 </figure>
 </div>
@@ -365,13 +346,13 @@ for(const s of services){page(servicePath(s),`수원 ${s.name} 디자인·상담
 </section>
 </article>
 </div>${contact()}`,{image:img(s),extra:[{'@type':'Service','@id':url(servicePath(s)+'#service'),name:s.name,description:s.description,url:url(servicePath(s)),image:url(img(s)),provider:{'@id':business['@id']}}]});}
-function articlePage(route,title,desc,body){page(route,`${title} | 온결브로우`,desc,`<div class="wrap">
+function articlePage(route,title,desc,body){const visual = services.find(s => s.slug === ({'/about/':'natural','/guide/':'retouch','/contact/':'combo'}[route])); page(route,`${title} | 온결브로우`,desc,`<div class="wrap">
 <nav class="breadcrumb" aria-label="현재 위치">
 <a href="/">홈</a> / ${title}</nav>
 <article class="article">
 <p class="eyebrow">ONGYEOL BROW STUDIO</p>
-<h1>${title}</h1>${body}</article>
-</div>${contact()}`);}
+<h1>${title}</h1>${visual ? `<figure class="page-visual"><img src="${img(visual)}" width="1254" height="1254" alt="${esc(visual.imageAlt)}"><figcaption>AI 디자인 참고 이미지</figcaption></figure>` : ''}${body}</article>
+</div>${contact()}`,{image:visual ? img(visual) : img(featured[0])});}
 articlePage('/about/','온결의 디자인 기준','온결브로우가 지향하는 자연스러운 눈썹 디자인. 결·음영·얼굴 비율·생활 습관을 함께 살펴보는 상담 기준을 소개합니다.',`<section>
 <div class="editorial">Your brow, your balance.</div>
 <h2>온전한 나의 인상, 자연스러운 결.</h2>
@@ -500,4 +481,4 @@ fs.mkdirSync(path.join(root, 'public'), { recursive: true });
 for (const name of ['robots.txt', 'sitemap.xml', 'rss.xml']) {
   fs.copyFileSync(path.join(out, name), path.join(root, 'public', name));
 }
-console.log('ONGYEOL BUILD v1.3.0 — complete; deploy directory: dist');
+console.log('ONGYEOL BUILD v1.5.0 — complete; deploy directory: dist');

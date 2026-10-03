@@ -63,8 +63,10 @@ for (const file of all) {
       assert(!hashes.has(digest)); hashes.add(digest);
     }
     assert(/class="controls" hidden/.test(html));
-    assert(/class="menu-btn" hidden/.test(html));
-    assert(!/aria-label="모바일 메뉴" hidden/.test(html));
+    const brandNav = html.match(/<nav class="brand-nav"[^>]*>([\s\S]*?)<\/nav>/)[1];
+    assert.equal((brandNav.match(/<a /g) || []).length, 4);
+    for (const route of ['about','services','guide','contact']) assert(brandNav.includes(`href="/${route}/"`));
+
   }
 }
 const robots = fs.readFileSync('dist/robots.txt', 'utf8');
