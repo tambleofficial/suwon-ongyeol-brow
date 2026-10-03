@@ -1,0 +1,37 @@
+[
+  {
+    "position": 1,
+    "name": "자연눈썹",
+    "url": "https://suwon-ongyeol-brow.pages.dev/services/natural/",
+    "image": "https://suwon-ongyeol-brow.pages.dev/assets/images/natural.webp",
+    "status": "로컬 카드·JSON-LD 일치 / 배포 응답 미검증"
+  },
+  {
+    "position": 2,
+    "name": "콤보눈썹",
+    "url": "https://suwon-ongyeol-brow.pages.dev/services/combo/",
+    "image": "https://suwon-ongyeol-brow.pages.dev/assets/images/combo.webp",
+    "status": "로컬 카드·JSON-LD 일치 / 배포 응답 미검증"
+  },
+  {
+    "position": 3,
+    "name": "남자눈썹",
+    "url": "https://suwon-ongyeol-brow.pages.dev/services/men/",
+    "image": "https://suwon-ongyeol-brow.pages.dev/assets/images/men.webp",
+    "status": "로컬 카드·JSON-LD 일치 / 배포 응답 미검증"
+  },
+  {
+    "position": 4,
+    "name": "파우더눈썹",
+    "url": "https://suwon-ongyeol-brow.pages.dev/services/powder/",
+    "image": "https://suwon-ongyeol-brow.pages.dev/assets/images/powder.webp",
+    "status": "로컬 카드·JSON-LD 일치 / 배포 응답 미검증"
+  },
+  {
+    "position": 5,
+    "name": "리터치·잔흔 상담",
+    "url": "https://suwon-ongyeol-brow.pages.dev/services/retouch/",
+    "image": "https://suwon-ongyeol-brow.pages.dev/assets/images/retouch.webp",
+    "status": "로컬 카드·JSON-LD 일치 / 배포 응답 미검증"
+  }
+]

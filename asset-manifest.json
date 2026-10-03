@@ -1,0 +1,102 @@
+[
+  {
+    "id": "natural",
+    "path": "assets/images/natural.webp",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 240800,
+    "sha256": "55b0a4eaccf56c34bbfffa351fe0687d348788d7cfe689724bff409301b0971a",
+    "origin": "본 대화에서 image_gen 도구로 생성",
+    "generated": true,
+    "usage": "서비스 설명용 디자인 참고 이미지; 실제 고객 사례 아님",
+    "publication": "사용자가 홈페이지용 AI 이미지 생성을 요청함",
+    "rights_note": "실제 인물·고객의 이용 동의 자료로 취급하지 않음; 제3자 상표·로고 없음",
+    "prompt_source": "IMAGE-PROMPTS.json",
+    "placements": [
+      "메인 카드",
+      "/services/natural/",
+      "/services/"
+    ],
+    "alt": "자연눈썹의 결과 형태를 설명하는 AI 디자인 참고 이미지"
+  },
+  {
+    "id": "combo",
+    "path": "assets/images/combo.webp",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 218962,
+    "sha256": "26072e4444f2a91fdd82bf816fb22bae45570a050ba12196c1faaac1975f9d8b",
+    "origin": "본 대화에서 image_gen 도구로 생성",
+    "generated": true,
+    "usage": "서비스 설명용 디자인 참고 이미지; 실제 고객 사례 아님",
+    "publication": "사용자가 홈페이지용 AI 이미지 생성을 요청함",
+    "rights_note": "실제 인물·고객의 이용 동의 자료로 취급하지 않음; 제3자 상표·로고 없음",
+    "prompt_source": "IMAGE-PROMPTS.json",
+    "placements": [
+      "메인 카드",
+      "/services/combo/",
+      "/services/"
+    ],
+    "alt": "콤보눈썹의 결과 형태를 설명하는 AI 디자인 참고 이미지"
+  },
+  {
+    "id": "men",
+    "path": "assets/images/men.webp",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 201834,
+    "sha256": "21b7cbf738b08fb16d7771367d0e976838736370ea370eebcbceaf0235c7d5b4",
+    "origin": "본 대화에서 image_gen 도구로 생성",
+    "generated": true,
+    "usage": "서비스 설명용 디자인 참고 이미지; 실제 고객 사례 아님",
+    "publication": "사용자가 홈페이지용 AI 이미지 생성을 요청함",
+    "rights_note": "실제 인물·고객의 이용 동의 자료로 취급하지 않음; 제3자 상표·로고 없음",
+    "prompt_source": "IMAGE-PROMPTS.json",
+    "placements": [
+      "메인 카드",
+      "/services/men/",
+      "/services/"
+    ],
+    "alt": "남자눈썹의 결과 형태를 설명하는 AI 디자인 참고 이미지"
+  },
+  {
+    "id": "powder",
+    "path": "assets/images/powder.webp",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 212956,
+    "sha256": "0ffbb67cf62ccc8da3d772c4b3678dc367460937e7829a22a704598e14b3b294",
+    "origin": "본 대화에서 image_gen 도구로 생성",
+    "generated": true,
+    "usage": "서비스 설명용 디자인 참고 이미지; 실제 고객 사례 아님",
+    "publication": "사용자가 홈페이지용 AI 이미지 생성을 요청함",
+    "rights_note": "실제 인물·고객의 이용 동의 자료로 취급하지 않음; 제3자 상표·로고 없음",
+    "prompt_source": "IMAGE-PROMPTS.json",
+    "placements": [
+      "메인 카드",
+      "/services/powder/",
+      "/services/"
+    ],
+    "alt": "파우더눈썹의 결과 형태를 설명하는 AI 디자인 참고 이미지"
+  },
+  {
+    "id": "retouch",
+    "path": "assets/images/retouch.webp",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 151276,
+    "sha256": "cfd50667b4ffc0135f0520beb6e7748fbb3346250165b3a48557edd4bcaffa9d",
+    "origin": "본 대화에서 image_gen 도구로 생성",
+    "generated": true,
+    "usage": "서비스 설명용 디자인 참고 이미지; 실제 고객 사례 아님",
+    "publication": "사용자가 홈페이지용 AI 이미지 생성을 요청함",
+    "rights_note": "실제 인물·고객의 이용 동의 자료로 취급하지 않음; 제3자 상표·로고 없음",
+    "prompt_source": "IMAGE-PROMPTS.json",
+    "placements": [
+      "메인 카드",
+      "/services/retouch/",
+      "/services/"
+    ],
+    "alt": "리터치·잔흔 상담의 결과 형태를 설명하는 AI 디자인 참고 이미지"
+  }
+]

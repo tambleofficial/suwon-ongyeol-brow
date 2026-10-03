@@ -1,0 +1,32 @@
+{
+  "/": {
+    "publishedAt": "2026-10-03",
+    "updatedAt": "2026-10-03",
+    "rss": false
+  },
+  "/services/": {
+    "publishedAt": "2026-10-03",
+    "updatedAt": "2026-10-03",
+    "rss": false
+  },
+  "/about/": {
+    "publishedAt": "2026-10-03",
+    "updatedAt": "2026-10-03",
+    "rss": false
+  },
+  "/guide/": {
+    "publishedAt": "2026-10-03",
+    "updatedAt": "2026-10-03",
+    "rss": true
+  },
+  "/contact/": {
+    "publishedAt": "2026-10-03",
+    "updatedAt": "2026-10-03",
+    "rss": false
+  },
+  "/privacy/": {
+    "publishedAt": "2026-10-03",
+    "updatedAt": "2026-10-03",
+    "rss": false
+  }
+}

@@ -1,0 +1,22 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import { validateInput } from './validate-input.mjs';
+const config = JSON.parse(fs.readFileSync('site.config.json'));
+const services = JSON.parse(fs.readFileSync('services.json'));
+const pages = JSON.parse(fs.readFileSync('pages.json'));
+validateInput(config, services, pages, config.siteUrl);
+const fail = (mutate, url = config.siteUrl) => {
+  const c = structuredClone(config), s = structuredClone(services), p = structuredClone(pages);
+  mutate(c, s, p);
+  assert.throws(() => validateInput(c, s, p, url));
+};
+fail(() => {}, 'http://suwon-ongyeol-brow.pages.dev');
+fail(() => {}, 'https://example.com');
+fail((c, s) => { s[1].slug = s[0].slug; });
+fail((c, s) => { s[0].slug = 'missing-image'; });
+fail((c, s) => { s[0].name = '{{brand}}'; });
+fail(c => { c.stationMapUrl = 'javascript:alert(1)'; });
+fail((c, s) => { s[0].publishedAt = '2026-99-99'; });
+const drafts = structuredClone(services); drafts.push({ slug: 'draft-example', publish: false, featured: false });
+validateInput(config, drafts, pages, config.siteUrl);
+console.log('PASS: HTTPS, placeholder, duplicate slug, missing image, unsafe link and bad-date rejection; unpublished drafts accepted.');

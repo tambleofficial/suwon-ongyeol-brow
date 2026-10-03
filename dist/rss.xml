@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>온결브로우 디자인·이용 안내</title>
+<link>https://suwon-ongyeol-brow.pages.dev/</link>
+<description>수원눈썹문신 디자인과 상담 안내</description>
+<language>ko</language>
+<atom:link href="https://suwon-ongyeol-brow.pages.dev/rss.xml" rel="self" type="application/rss+xml"/><item>
+<title>눈썹 상담·예약 가이드 | 온결브로우</title>
+<link>https://suwon-ongyeol-brow.pages.dev/guide/</link>
+<guid isPermaLink="true">https://suwon-ongyeol-brow.pages.dev/guide/</guid>
+<description>수원눈썹문신 상담 전 준비할 정보, 가격·리터치 조건과 일정 확인, 디자인 비교 질문을 정리한 온결브로우 이용 가이드.</description>
+<pubDate>Fri, 02 Oct 2026 15:00:00 GMT</pubDate>
+</item></channel>
+</rss>
