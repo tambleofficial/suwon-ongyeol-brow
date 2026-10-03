@@ -1,8 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { validateInput } from './validate-input.mjs';
 
-const root = process.cwd();
+const root = fileURLToPath(new URL('../', import.meta.url));
+process.chdir(root);
+console.log('ONGYEOL BUILD v1.1.2 — starting');
+for (const required of ['site.config.json', 'services.json', 'pages.json', 'assets']) {
+  if (!fs.existsSync(required)) throw new Error(`필수 파일 누락: ${required}. ZIP 전체 내용을 저장소 루트에 업로드하세요.`);
+}
 const config = JSON.parse(fs.readFileSync('site.config.json', 'utf8'));
 const serviceData = JSON.parse(fs.readFileSync('services.json', 'utf8'));
 const pageMetadata = JSON.parse(fs.readFileSync('pages.json', 'utf8'));
@@ -16,7 +22,13 @@ const out = path.join(root, 'dist');
 fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(out, { recursive: true });
 fs.cpSync('assets', path.join(out, 'assets'), { recursive: true });
-fs.cpSync('public', out, { recursive: true, filter: source => !path.basename(source).startsWith('.') });
+// Ownership verification files are optional; an empty public directory may be absent in Git.
+if (fs.existsSync('public')) {
+  fs.cpSync('public', out, {
+    recursive: true,
+    filter: source => !path.basename(source).startsWith('.')
+  });
+}
 const esc = value => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
 const url = relative => new URL(relative, base + '/').href;
 const tel = 'tel:' + config.phone.replace(/[^0-9+]/g, '');
@@ -470,3 +482,10 @@ const mapping = featured.map((service, index) => ({
 }));
 fs.writeFileSync('carousel-mapping.json', JSON.stringify(mapping, null, 2) + '\n');
 fs.writeFileSync('carousel-mapping.md', '# 캐러셀 매핑표\n\n|순서|카드명|상세 URL|대표 이미지|검수|\n|---|---|---|---|---|\n' + mapping.map(row => `|${row.position}|${row.name}|${row.url}|${row.image}|${row.status}|`).join('\n') + '\n');
+
+// Keep visible, deployment-ready crawler files in public as well as dist.
+fs.mkdirSync(path.join(root, 'public'), { recursive: true });
+for (const name of ['robots.txt', 'sitemap.xml', 'rss.xml']) {
+  fs.copyFileSync(path.join(out, name), path.join(root, 'public', name));
+}
+console.log('ONGYEOL BUILD v1.1.2 — complete; deploy directory: dist');
